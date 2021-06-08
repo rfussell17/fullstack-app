@@ -19,11 +19,7 @@ db.once("open", () => {
 
 const app = express();
 
-<<<<<<< HEAD
 app.engine('ejs', ejsMate)
-=======
-app.engine('ejs', ejsMate);
->>>>>>> dev
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
