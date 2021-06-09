@@ -2,8 +2,10 @@ const express = require("express");
 const path = require("path");
 const mongoose = require("mongoose");
 const ejsMate = require('ejs-mate');
+catchAsync = require('./helpers/catchAsync');
 const methodOverride = require("method-override");
 const Campground = require("./models/campground");
+const catchAsync = require("./helpers/catchAsync");
 
 mongoose.connect("mongodb://localhost:27017/yelp-camp", {
   useNewUrlParser: true,
@@ -39,15 +41,11 @@ app.get("/campgrounds/new", (req, res) => {
   res.render("campgrounds/new");
 });
 
-app.post("/campgrounds", async (req, res, next) => {
-  try {
+app.post("/campgrounds", catchAsync(async (req, res, next) => {
   const campground = new Campground(req.body.campground);
   await campground.save();
   res.redirect(`/campgrounds/${campground.id}`);
-  } catch(e){
-    next(e)
-  }
-});
+}));
 
 app.get("/campgrounds/:id", async (req, res) => {
   const campground = await Campground.findById(req.params.id);
