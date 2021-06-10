@@ -82,6 +82,10 @@ app.delete("/campgrounds/:id", catchAsync(async (req, res, next) => {
   res.redirect("/campgrounds");
 }));
 
+app.post('/campgrounds/:id/reviews', catchAsync(async (req, res) => {
+  res.send('here')
+}))
+
 app.all('*', (req, res, next) => {
   next(new ExpressError('Page Not Found', 404));
 })
