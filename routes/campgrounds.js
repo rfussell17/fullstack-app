@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const { campgroundSchema } = require('../schemas')
 const catchAsync = require('../helpers/catchAsync');
 const ExpressError = require('../helpers/ExpressError');
 const Campground = require("../models/campground");
