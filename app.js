@@ -9,6 +9,8 @@ const methodOverride = require("method-override");
 const Campground = require("./models/campground");
 const Review = require('./models/review');
 
+const campgrounds = require('./routes/campgrounds');
+
 mongoose.connect("mongodb://localhost:27017/yelp-camp", {
   useNewUrlParser: true,
   useCreateIndex: true,
@@ -50,7 +52,9 @@ const validateReview = (req, res, next) => {
   }
 }
 
-app.get("/", (req, res) => {
+app.use('/campgrounds', campgrounds)
+
+app.get('/', (req, res) => {
   res.render("home");
 });
 
