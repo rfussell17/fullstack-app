@@ -2,11 +2,8 @@ const express = require("express");
 const path = require("path");
 const mongoose = require("mongoose");
 const ejsMate = require('ejs-mate');
-const { campgroundSchema, reviewSchema } = require('./schemas')
 const ExpressError = require('./helpers/ExpressError');
 const methodOverride = require("method-override");
-const Campground = require("./models/campground");
-const Review = require('./models/review');
 
 const campgrounds = require('./routes/campgrounds');
 const reviews = require('./routes/reviews');
